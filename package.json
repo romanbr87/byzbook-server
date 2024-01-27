@@ -7,7 +7,7 @@
     "start": "node app.js --unhandled-rejections=none",
     "dev": "node app.js",
     "app": "nodemon node app.js --unhandled-rejections=none --trace-warnings",
-    "build": "npm install --save | npm audit fix"
+    "build": "npm install"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
