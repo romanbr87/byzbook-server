@@ -1,2 +1,2 @@
-# byzbook-server
-Server for byzbook website
+# ByzbookServer
+ Byzbook's webserver
