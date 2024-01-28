@@ -58,20 +58,20 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Access-Control-Allow-Origin', 'https://byzbook1.vercel.app');
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+//   res.header('Access-Control-Allow-Origin', 'https://byzbook1.vercel.app');
   
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Credentials', 'true');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//   res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
+//   res.header('Access-Control-Allow-Credentials', 'true');
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+//   if (req.method === 'OPTIONS') {
+//     return res.status(200).end();
+//   }
 
-  next();
-});
+//   next();
+// });
 
 app.use(session);
 //app.use(cookieParser(process.env.COOKIE_SECRET));
