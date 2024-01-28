@@ -169,12 +169,14 @@ router.post(
   (req, res) => {
     try {
       let newBus = new business(req.body);
-      cloudinary.uploader.upload(req.fileContent, async function (err, data) {
+      // console.log (newBus);
+      // res.send (null);
+      cloudinary.uploader.upload(req.fileContent, async function (data, err) {
         if (err) {
           console.log(err);
           return next({ status: 404, message: err });
         }
-        const newImg = new image({
+        const newImg = new images({
           gsx$refID: newBus._id,
           gsx$logo: data.url,
         });
@@ -190,6 +192,7 @@ router.post(
     }
   }
 );
+
 
 /*-------------------------------------------------------*/
 
