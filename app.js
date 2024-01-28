@@ -51,12 +51,11 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: false }));
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://byzbook1.vercel.app"],
-    allowedHeaders: ["Content-Type", "Authorization"], credentials: true
-  })
-);
+app.use(cors({
+  origin: ["http://localhost:3000", "https://byzbook1.vercel.app"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 
 app.use((req, res, next) => {
   const allowedOrigins = ["http://localhost:3000", "https://byzbook1.vercel.app"];
@@ -70,9 +69,9 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'OPTIONS, POST, GET, PUT, DELETE');
   res.header('Access-Control-Allow-Credentials', 'true');
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+  // if (req.method === 'OPTIONS') {
+  //   return res.status(200).end();
+  // }
 
   next();
 });
