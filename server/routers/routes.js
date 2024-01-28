@@ -31,15 +31,6 @@ import { base64func } from "../middlewares/business/base64Func.js";
 import { apiRouteList } from "../../utils/api-routes.js";
 import { mongoRegex_id } from "../../utils/utils.js";
 
-
-// const importAll = (modName) => {
-//   const mod = require(modName);
-//   Object.keys(mod).forEach((exportedElementId) => {
-//     global[exportedElementId] = mod[exportedElementId];
-//   });
-// };
-// importAll()
-
 router.get("/getApiRoutes", async (req, res) => {
   res.json(apiRouteList);
 });
@@ -55,7 +46,6 @@ router.get(
       next,
       false,
       async function (val, res) {
-        //await business.deleteMany ({});
         return res.render("./Components/BusinessEditor", val);
       },
       0
