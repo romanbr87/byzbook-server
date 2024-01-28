@@ -66,17 +66,17 @@ app.use(flash())
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function (req, res, next) {
-  if (!req.user)
-    passport.authenticate("local", function (err, user, info) {
-      user = { username: "romanbr87", password: "1213456" };
-      req.login({ username: user.username }, (loginErr) => {
-        console.log("User Authenticated");
-        next();
-      });
-    })(req, res, next);
-  else next();
-}); //*/
+// app.use(function (req, res, next) {
+//   if (!req.user)
+//     passport.authenticate("local", function (err, user, info) {
+//       user = { username: "romanbr87", password: "1213456" };
+//       req.login({ username: user.username }, (loginErr) => {
+//         console.log("User Authenticated");
+//         next();
+//       });
+//     })(req, res, next);
+//   else next();
+// }); //*/
 
 cloudinary.config({
   secure: true,
