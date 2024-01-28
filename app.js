@@ -1,7 +1,7 @@
-import flash  from 'connect-flash';
+import flash from 'connect-flash';
 import logger from 'morgan';
 import express from 'express';
-import cors from'cors'
+import cors from 'cors'
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv'
 import expressSession from 'express-session';
@@ -33,7 +33,7 @@ connect().catch((e) => {
   console.log(`\x1Bc`);
 });
 
-app.get('/favicon.ico', function(req, res, next) {
+app.get('/favicon.ico', function (req, res, next) {
   next();
 });
 
@@ -53,10 +53,24 @@ app.use(express.urlencoded({ limit: '50mb', extended: false }));
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "*"],
-    allowedHeaders: ["Content-Type", "Authorization"],credentials: true
+    origin: ["http://localhost:3000", "https://byzbook1.vercel.app", "*"],
+    allowedHeaders: ["Content-Type", "Authorization"], credentials: true
   })
 );
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Credentials', 'true');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  next();
+});
+
 app.use(session);
 //app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(nocache());
@@ -102,4 +116,4 @@ app.post("/*", function (req, res, next) {
   res.status(403).send({ message: "לא ניתן לקבל נתונים" });
 });
 
-export {app}
+export { app }
