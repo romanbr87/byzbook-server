@@ -53,7 +53,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: false }));
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://byzbook1.vercel.app", "*"],
+    origin: ["http://localhost:3000", "https://byzbook1.vercel.app"],
     allowedHeaders: ["Content-Type", "Authorization"], credentials: true
   })
 );
